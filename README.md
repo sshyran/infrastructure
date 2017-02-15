@@ -8,7 +8,7 @@ You'll need Ansible installed to run the playbooks, instructions here: http://do
 
 ## Running playbook
 
-   ansible-playbook ansible/playbook.yml -i ansible/inventories/libraries-io
+    ansible-playbook ansible/playbook.yml -i ansible/inventories/libraries-io
 
 ### Note on Patches/Pull Requests
 
