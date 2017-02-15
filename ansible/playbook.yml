@@ -1,0 +1,17 @@
+---
+- hosts: all
+  vars:
+    timezone: UTC
+    sys_packages:
+      - build-essential
+      - libpq-dev
+      - libxml2-dev
+      - libxslt1-dev
+      - nodejs
+      - curl
+      - git-core
+      - software-properties-common
+      - pgbouncer
+      - docutils-common
+  roles:
+    - init
