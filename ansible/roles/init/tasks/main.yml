@@ -15,3 +15,6 @@
 - name: More Configure the timezone
   become: yes
   file: src=/usr/share/zoneinfo/{{timezone}} dest=/etc/localtime state=link force=yes backup=yes
+
+- name: Hourly restart cron job
+  cron: name="restart libraries" minute="1" job="/sbin/restart librariesio > /dev/null 2>&1"
