@@ -15,3 +15,4 @@
       - docutils-common
   roles:
     - init
+    - calebwoods.brightbox_ruby

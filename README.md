@@ -6,6 +6,10 @@ All the code and configuration for managing the servers that https://libraries.i
 
 You'll need Ansible installed to run the playbooks, instructions here: http://docs.ansible.com/intro_installation.html
 
+## Install required roles from Ansible Galaxy
+
+    ansible-galaxy install -r ansible/requirements.yml
+
 ## Running playbook
 
     ansible-playbook ansible/playbook.yml -i ansible/inventories/libraries-io

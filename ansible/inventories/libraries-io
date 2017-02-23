@@ -14,6 +14,8 @@
 
 [webservers:vars]
 ansible_user=root
+ruby_version=2.3.3
 
 [backgroundworkers:vars]
 ansible_user=root
+ruby_version=2.3.3
