@@ -16,3 +16,4 @@
   roles:
     - init
     - calebwoods.brightbox_ruby
+    - rails
