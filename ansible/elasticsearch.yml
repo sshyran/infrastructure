@@ -1,0 +1,9 @@
+---
+- hosts: elasticsearch_master_nodes
+  vars:
+    timezone: UTC
+    sys_packages:
+      - curl
+  roles:
+    - init
+    - { role: elasticsearch, es_instance_name: "node1" }
