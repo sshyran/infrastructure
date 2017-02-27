@@ -1,4 +1,4 @@
 .DS_Store
 *.swp
 ._*
-ansible/playbook.retry
+*.retry

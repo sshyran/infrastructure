@@ -10,9 +10,13 @@ You'll need Ansible installed to run the playbooks, instructions here: http://do
 
     ansible-galaxy install -r ansible/requirements.yml
 
-## Running playbook
+## Running playbooks
 
-    ansible-playbook ansible/playbook.yml -i ansible/inventories/libraries-io
+### main app
+
+For deploying (https://github.com/librariesio/libraries.io
+
+    ansible-playbook ansible/main-app.yml -i ansible/inventories/main-app
 
 ### Note on Patches/Pull Requests
 
@@ -27,4 +31,4 @@ Please note that this project is released with a [Contributor Code of Conduct](C
 
 ## Copyright
 
-Copyright (c) 2016 Andrew Nesbitt. See [LICENSE](https://github.com/librariesio/libraries.io/blob/master/LICENSE.txt) for details.
+Copyright (c) 2016 Andrew Nesbitt. See [LICENSE](https://github.com/librariesio/infrastructure/blob/master/LICENSE.txt) for details.
