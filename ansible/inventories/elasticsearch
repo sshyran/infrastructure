@@ -5,3 +5,8 @@
 
 [elasticsearch_master_nodes:vars]
 ansible_user=root
+
+[elasticsearch_master_nodes_internal]
+10.4.76.131
+10.4.148.5
+10.4.119.5
