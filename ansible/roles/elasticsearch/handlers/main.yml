@@ -2,10 +2,9 @@
 - name: reload systemd configuration
   command: systemctl daemon-reload
 
+- name: Ensure elasticsearch is started
+  service: name={{instance_init_script | basename}} state=started enabled=yes
+
 - name: restart elasticsearch
   service: name=elasticsearch state=restarted enabled=yes
   when: es_restart_on_change and es_start_service and (config_updated is defined and config_updated.changed)
-
-- name: load-templates
-  include: ./handlers/elasticsearch-templates.yml
-  when: es_templates
