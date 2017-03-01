@@ -1,5 +1,7 @@
 [elasticsearch_master_nodes]
 51.15.130.54
+51.15.128.237
+51.15.141.224
 
 [elasticsearch_master_nodes:vars]
 ansible_user=root
