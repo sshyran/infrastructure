@@ -33,9 +33,8 @@
   template: src=elasticsearch.yml.j2 dest=/etc/elasticsearch/elasticsearch.yml mode=0644 force=yes
   notify: restart elasticsearch
 
-#Copy the systemd specific file if systemd is installed
 - name: Copy Systemd File for Instance
-  template: src=systemd/elasticsearch.j2 dest={{sysd_script}} mode=0644 force=yes
+  template: src=systemd/elasticsearch.j2 dest=/usr/lib/systemd/system/elasticsearch.service mode=0644 force=yes
   notify:
   - reload systemd configuration
   - restart elasticsearch
