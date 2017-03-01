@@ -19,12 +19,6 @@
 - name: Install Elasticsearch.
   apt: pkg=elasticsearch state=present
 
-- name: restart Elasticsearch.
-  service: name=elasticsearch state=restarted enabled=yes
-
-- name: Wait for elasticsearch to startup
-  wait_for: host={{es_api_host}} port={{es_api_port}} delay=5 connect_timeout=1
-
 - name: Copy Default File
   template: src=elasticsearch.j2 dest=/etc/default/elasticsearch mode=0644 force=yes
   notify: restart elasticsearch
@@ -38,3 +32,29 @@
   notify:
   - reload systemd configuration
   - restart elasticsearch
+
+- name: restart elasticsearch
+  service: name=elasticsearch state=restarted enabled=yes
+
+- name: install firewall
+  apt: pkg=ufw state=latest
+
+- name: allow ssh
+  ufw:
+    rule: allow
+    port: ssh
+
+- name: allow elasticsearch tcp
+  ufw:
+    rule: allow
+    port: 9300
+    src: 10.0.0.0/8
+
+- name: allow elasticsearch http
+  ufw:
+    rule: allow
+    port: 9200
+    src: 10.0.0.0/8
+
+- name: enable firewall
+  ufw: state=enabled
