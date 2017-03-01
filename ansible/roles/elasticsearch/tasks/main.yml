@@ -19,51 +19,18 @@
 - name: Install Elasticsearch.
   apt: pkg=elasticsearch state=present
 
-- name: Start Elasticsearch.
-  service: name=elasticsearch state=started enabled=yes
+- name: restart Elasticsearch.
+  service: name=elasticsearch state=restarted enabled=yes
 
 - name: Wait for elasticsearch to startup
   wait_for: host={{es_api_host}} port={{es_api_port}} delay=5 connect_timeout=1
 
-- file: path=/etc/elasticsearch/templates state=directory owner={{ es_user }} group={{ es_group }}
-
-- name: Copy default templates to elasticsearch
-  copy: src=templates dest=/etc/elasticsearch/ owner={{ es_user }} group={{ es_group }}
-  when: es_templates_fileglob is not defined
-
-- name: Copy templates to elasticsearch
-  copy: src={{ item }} dest=/etc/elasticsearch/templates owner={{ es_user }} group={{ es_group }}
-  with_fileglob:
-    - "{{ es_templates_fileglob | default('') }}"
-
-- set_fact: instance_default_file=/etc/default/elasticsearch
-- set_fact: es_home=/usr/share/elasticsearch
-- set_fact: m_lock_enabled={{ es_config['bootstrap.memory_lock'] is defined and es_config['bootstrap.memory_lock'] == True }}
-- set_fact: sysd_script=/usr/lib/systemd/system/elasticsearch.service
-
-#Create required directories
-- name: Create Directories
-  file: path={{ item }} state=directory owner={{ es_user }} group={{ es_group }}
-  with_items:
-    - "{{pid_dir}}"
-    - "{{log_dir}}"
-    - "{{conf_dir}}"
-
-- name: Create Data Directories
-  file: path={{ item }} state=directory owner={{ es_user }} group={{ es_group }}
-  with_items:
-    - "{{data_dirs}}"
-
-
-#Copy the config template
-- name: Copy Configuration File
-  template: src=elasticsearch.yml.j2 dest={{conf_dir}}/elasticsearch.yml owner={{ es_user }} group={{ es_group }} mode=0644 force=yes
-  register: config_updated
+- name: Copy Default File
+  template: src=elasticsearch.j2 dest=/etc/default/elasticsearch mode=0644 force=yes
   notify: restart elasticsearch
 
-#Copy the instance specific default file
-- name: Copy Default File for Instance
-  template: src=elasticsearch.j2 dest={{instance_default_file}} mode=0644 force=yes
+- name: Copy config File
+  template: src=elasticsearch.yml.j2 dest=/etc/elasticsearch/elasticsearch.yml mode=0644 force=yes
   notify: restart elasticsearch
 
 #Copy the systemd specific file if systemd is installed
@@ -72,13 +39,3 @@
   notify:
   - reload systemd configuration
   - restart elasticsearch
-
-#Copy the logging.yml
-
-- name: Copy log4j2.properties File for Instance
-  template: src=log4j2.properties.j2 dest={{conf_dir}}/log4j2.properties owner={{ es_user }} group={{ es_group }} mode=0644 force=yes
-  notify: restart elasticsearch
-
-- name: Copy jvm.options File for Instance
-  template: src=jvm.options.j2 dest={{conf_dir}}/jvm.options owner={{ es_user }} group={{ es_group }} mode=0644 force=yes
-  notify: restart elasticsearch
