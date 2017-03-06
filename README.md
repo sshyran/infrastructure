@@ -14,7 +14,7 @@ You'll need Ansible installed to run the playbooks, instructions here: http://do
 
 ### main app
 
-For deploying (https://github.com/librariesio/libraries.io
+For deploying [Libraries.io](https://github.com/librariesio/libraries.io)
 
     ansible-playbook ansible/main-app.yml -i ansible/inventories/main-app
 
