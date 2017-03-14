@@ -13,6 +13,7 @@
       - software-properties-common
       - pgbouncer
       - docutils-common
+      - cmake
   roles:
     - init
     - calebwoods.brightbox_ruby
