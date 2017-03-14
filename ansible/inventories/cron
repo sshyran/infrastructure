@@ -1,0 +1,6 @@
+[cron]
+51.15.130.54
+
+[cron:vars]
+ansible_user=root
+ruby_version=2.3.3

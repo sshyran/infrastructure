@@ -18,6 +18,18 @@ For deploying [Libraries.io](https://github.com/librariesio/libraries.io)
 
     ansible-playbook ansible/main-app.yml -i ansible/inventories/main-app
 
+### cron machine
+
+For running background jobs from [Libraries.io](https://github.com/librariesio/libraries.io)
+
+    ansible-playbook ansible/cron.yml -i ansible/inventories/cron
+
+### elasticsearch cluster
+
+For the elasticsearch cluster for [Libraries.io](https://github.com/librariesio/libraries.io)
+
+    ansible-playbook ansible/elasticsearch.yml -i ansible/inventories/elasticsearch
+
 ### Note on Patches/Pull Requests
 
  * Fork the project.
