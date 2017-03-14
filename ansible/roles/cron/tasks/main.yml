@@ -1,0 +1,104 @@
+# # every 10 mins
+# minute: "*/10"
+#
+# rake download:cran
+# rake projects:sync_pypi_deps
+
+# # every day
+# minute: "1"
+# hour: "1"
+#
+# rake projects:link_dependencies
+# rake projects:check_nuget_yanks
+# rake projects:check_removed_status
+# rake download:bower
+# rake download:go
+# rake download:meteor
+# rake download:carthage
+# rake download:clojars
+# rake download:julia
+# rake download:alcatraz
+# rake download:dub
+# rake download:nimble
+# rake download:platformio
+# rake download:homebrew
+# rake download:wordpress
+# rake download:small_registries
+# rake download:maven
+
+---
+- name: update_source_ranks
+  cron:
+    name: update_source_ranks
+    minute: "1"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production projects:update_source_ranks > /dev/null 2>&1
+
+- name: update_trending
+  cron:
+    name: update_trending
+    minute: "6"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production github:update_trending > /dev/null 2>&1
+
+- name: sync_permissions
+  cron:
+    name: sync_permissions
+    minute: "12"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production users:sync_permissions > /dev/null 2>&1
+
+- name: download:nuget
+  cron:
+    name: download:nuget
+    minute: "18"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production download:nuget > /dev/null 2>&1
+
+- name: github:sync_users
+  cron:
+    name: github:sync_users
+    minute: "24"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production github:sync_users > /dev/null 2>&1
+
+- name: github:sync_orgs
+  cron:
+    name: github:sync_orgs
+    minute: "30"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production github:sync_orgs > /dev/null 2>&1
+
+- name: github:sync_repos
+  cron:
+    name: github:sync_repos
+    minute: "36"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production github:sync_repos > /dev/null 2>&1
+
+- name: github:sync_issues
+  cron:
+    name: github:sync_issues
+    minute: "42"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production github:sync_issues > /dev/null 2>&1
+
+- name: bitbucket:find_new_repos
+  cron:
+    name: bitbucket:find_new_repos
+    minute: "48"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production bitbucket:find_new_repos > /dev/null 2>&1
+
+- name: gitlab:find_new_repos
+  cron:
+    name: gitlab:find_new_repos
+    minute: "54"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production gitlab:find_new_repos > /dev/null 2>&1
+
+- name: download:bower_all
+  cron:
+    name: download:bower_all
+    minute: "0"
+    hour: "0"
+    weekday: "1"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production download:bower_all > /dev/null 2>&1
+
+- name: sitemap:refresh
+  cron:
+    name: sitemap:refresh
+    minute: "0"
+    hour: "0"
+    weekday: "0"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production sitemap:refresh > /dev/null 2>&1
