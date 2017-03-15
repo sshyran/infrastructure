@@ -1,32 +1,16 @@
-# # every 10 mins
-# minute: "*/10"
-#
-# rake download:cran
-# rake projects:sync_pypi_deps
-
-# # every day
-# minute: "1"
-# hour: "1"
-#
-# rake projects:link_dependencies
-# rake projects:check_nuget_yanks
-# rake projects:check_removed_status
-# rake download:bower
-# rake download:go
-# rake download:meteor
-# rake download:carthage
-# rake download:clojars
-# rake download:julia
-# rake download:alcatraz
-# rake download:dub
-# rake download:nimble
-# rake download:platformio
-# rake download:homebrew
-# rake download:wordpress
-# rake download:small_registries
-# rake download:maven
-
 ---
+- name: download:cran
+  cron:
+    name: download:cran
+    minute: "*/10"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production download:cran > /dev/null 2>&1
+
+- name: projects:sync_pypi_deps
+  cron:
+    name: projects:sync_pypi_deps
+    minute: "*/10"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production projects:sync_pypi_deps > /dev/null 2>&1
+
 - name: update_source_ranks
   cron:
     name: update_source_ranks
@@ -102,3 +86,122 @@
     hour: "0"
     weekday: "0"
     job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production sitemap:refresh > /dev/null 2>&1
+
+- name: projects:link_dependencies
+  cron:
+    name: projects:link_dependencies
+    minute: "1"
+    hour: "1"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production projects:link_dependencies > /dev/null 2>&1
+
+- name: projects:check_nuget_yanks
+  cron:
+    name: projects:check_nuget_yanks
+    minute: "1"
+    hour: "1"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production projects:check_nuget_yanks > /dev/null 2>&1
+
+- name: projects:check_removed_status
+  cron:
+    name: projects:check_removed_status
+    minute: "1"
+    hour: "1"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production projects:check_removed_status > /dev/null 2>&1
+
+- name: download:bower
+  cron:
+    name: download:bower
+    minute: "1"
+    hour: "1"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production download:bower > /dev/null 2>&1
+
+- name: download:go
+  cron:
+    name: download:go
+    minute: "1"
+    hour: "1"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production download:go > /dev/null 2>&1
+
+- name: download:meteor
+  cron:
+    name: download:meteor
+    minute: "1"
+    hour: "1"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production download:meteor > /dev/null 2>&1
+
+- name: download:carthage
+  cron:
+    name: download:carthage
+    minute: "1"
+    hour: "1"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production download:carthage > /dev/null 2>&1
+
+- name: download:clojars
+  cron:
+    name: download:clojars
+    minute: "1"
+    hour: "1"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production download:clojars > /dev/null 2>&1
+
+- name: download:julia
+  cron:
+    name: download:julia
+    minute: "1"
+    hour: "1"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production download:julia > /dev/null 2>&1
+
+- name: download:alcatraz
+  cron:
+    name: download:alcatraz
+    minute: "1"
+    hour: "1"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production download:alcatraz > /dev/null 2>&1
+
+- name: download:dub
+  cron:
+    name: download:dub
+    minute: "1"
+    hour: "1"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production download:dub > /dev/null 2>&1
+
+- name: download:nimble
+  cron:
+    name: download:nimble
+    minute: "1"
+    hour: "1"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production download:nimble > /dev/null 2>&1
+
+- name: download:platformio
+  cron:
+    name: download:platformio
+    minute: "1"
+    hour: "1"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production download:platformio > /dev/null 2>&1
+
+- name: download:homebrew
+  cron:
+    name: download:homebrew
+    minute: "1"
+    hour: "1"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production download:homebrew > /dev/null 2>&1
+
+- name: download:wordpress
+  cron:
+    name: download:wordpress
+    minute: "1"
+    hour: "1"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production download:wordpress > /dev/null 2>&1
+
+- name: download:small_registries
+  cron:
+    name: download:small_registries
+    minute: "1"
+    hour: "1"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production download:small_registries > /dev/null 2>&1
+
+- name: download:maven
+  cron:
+    name: download:maven
+    minute: "1"
+    hour: "1"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production download:maven > /dev/null 2>&1
