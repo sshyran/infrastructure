@@ -4,6 +4,7 @@
     timezone: UTC
     sys_packages:
       - curl
+      - logrotate
   roles:
     - init
     - { role: elasticsearch, es_instance_name: "node1" }

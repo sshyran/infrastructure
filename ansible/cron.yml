@@ -18,6 +18,7 @@
       - libcurl3-gnutls
       - libcurl4-openssl-dev
       - cmake
+      - logrotate
   roles:
     - init
     - calebwoods.brightbox_ruby
