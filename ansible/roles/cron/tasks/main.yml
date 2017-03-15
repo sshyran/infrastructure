@@ -79,6 +79,14 @@
     weekday: "1"
     job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production download:bower_all > /dev/null 2>&1
 
+- name: projects:check_nuget_yanks
+  cron:
+    name: projects:check_nuget_yanks
+    minute: "0"
+    hour: "0"
+    weekday: "2"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production projects:check_nuget_yanks > /dev/null 2>&1
+
 - name: sitemap:refresh
   cron:
     name: sitemap:refresh
@@ -93,13 +101,6 @@
     minute: "1"
     hour: "1"
     job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production projects:link_dependencies > /dev/null 2>&1
-
-- name: projects:check_nuget_yanks
-  cron:
-    name: projects:check_nuget_yanks
-    minute: "1"
-    hour: "1"
-    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production projects:check_nuget_yanks > /dev/null 2>&1
 
 - name: projects:check_removed_status
   cron:
