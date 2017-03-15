@@ -58,18 +58,3 @@
 
 - name: enable firewall
   ufw: state=enabled
-
-- name: logrotate
-  logrotate_scripts:
-    - name: elasticsearch
-      path: "/var/log/elasticsearch/*.log"
-      options:
-        - daily
-        - rotate 100
-        - size 50M
-        - copytruncate
-        - compress
-        - delaycompress
-        - missingok
-        - notifempty
-        - create 644 elasticsearch elasticsearch

@@ -5,6 +5,21 @@
     sys_packages:
       - curl
       - logrotate
+    logrotate_scripts:
+      - name: elasticsearch
+        path: "/var/log/elasticsearch/*.log"
+        options:
+          - daily
+          - rotate 100
+          - size 50M
+          - copytruncate
+          - compress
+          - delaycompress
+          - missingok
+          - notifempty
+          - create 644 elasticsearch elasticsearch
+
   roles:
     - init
     - { role: elasticsearch, es_instance_name: "node1" }
+    - nickhammond.logrotate
