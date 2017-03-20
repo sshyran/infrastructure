@@ -19,6 +19,7 @@
       - libcurl4-openssl-dev
       - cmake
       - logrotate
+      - libicu-dev
   roles:
     - init
     - calebwoods.brightbox_ruby

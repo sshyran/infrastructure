@@ -15,6 +15,7 @@
       - docutils-common
       - cmake
       - logrotate
+      - libicu-dev
   roles:
     - init
     - calebwoods.brightbox_ruby
