@@ -3,4 +3,4 @@
 
 [cron:vars]
 ansible_user=root
-ruby_version=2.3.3
+ruby_version=2.4.0
