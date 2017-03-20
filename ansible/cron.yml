@@ -20,6 +20,7 @@
       - cmake
       - logrotate
       - libicu-dev
+      - pkg-config
   roles:
     - init
     - calebwoods.brightbox_ruby
