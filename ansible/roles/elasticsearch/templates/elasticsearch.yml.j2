@@ -5,6 +5,5 @@ discovery.zen.ping.unicast.hosts:
     "{{ host }}:9300",
   {% endfor %}
   ]
-bootstrap.mlockall: true
 bootstrap.memory_lock: true
 network.host: 0.0.0.0
