@@ -39,6 +39,12 @@
 - name: install firewall
   apt: pkg=ufw state=latest
 
+- name: Copy ufw config template
+  template: src=ufw dest=/etc/default/ufw mode=0644 force=yes
+
+- name: Copy ufw after.rules template
+  template: src=after.rules dest=/etc/ufw/after.rules mode=0644 force=yes
+
 - name: allow ssh
   ufw:
     rule: allow
@@ -55,6 +61,10 @@
     rule: allow
     port: 9200
     src: 10.0.0.0/8
+
+- name: disable firewall logging
+  ufw:
+    logging: "off"
 
 - name: enable firewall
   ufw: state=enabled
