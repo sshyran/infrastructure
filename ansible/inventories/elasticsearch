@@ -1,12 +1,12 @@
 [elasticsearch_master_nodes]
 212.47.240.169
-163.172.154.122
-51.15.141.224
+212.47.232.13
+163.172.170.65
 
 [elasticsearch_master_nodes:vars]
 ansible_user=root
 
 [elasticsearch_master_nodes_internal]
-10.4.76.131
-10.1.80.59
-10.1.225.53
+10.1.67.41
+10.1.170.117
+10.1.64.187
