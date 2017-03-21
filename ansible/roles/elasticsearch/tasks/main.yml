@@ -67,4 +67,7 @@
     logging: "off"
 
 - name: enable firewall
+  ufw: state=disabled
+
+- name: enable firewall
   ufw: state=enabled
