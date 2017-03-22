@@ -26,3 +26,4 @@
     - init
     - calebwoods.brightbox_ruby
     - cron
+    - pgbouncer

@@ -1,0 +1,4 @@
+---
+- name: Copy pgbouncer config
+  template: src=pgbouncer dest=/etc/default/pgbouncer mode=0644 force=yes
+  notify: restart pgbouncer
