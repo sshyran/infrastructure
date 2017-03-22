@@ -1,0 +1,5 @@
+[redis]
+212.47.246.166
+
+[redis:vars]
+ansible_user=root

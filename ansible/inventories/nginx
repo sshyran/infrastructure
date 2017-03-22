@@ -1,0 +1,5 @@
+[nginx]
+163.172.172.206
+
+[nginx:vars]
+ansible_user=root

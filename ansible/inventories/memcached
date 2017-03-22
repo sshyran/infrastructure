@@ -1,0 +1,5 @@
+[memcached]
+163.172.187.36
+
+[memcached:vars]
+ansible_user=root
