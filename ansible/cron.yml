@@ -21,6 +21,7 @@
       - logrotate
       - libicu-dev
       - pkg-config
+      - postgresql-client
   roles:
     - init
     - calebwoods.brightbox_ruby
