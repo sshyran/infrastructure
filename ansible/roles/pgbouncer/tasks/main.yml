@@ -1,4 +1,8 @@
 ---
-- name: Copy pgbouncer config
+- name: Copy pgbouncer start file
   template: src=pgbouncer dest=/etc/default/pgbouncer mode=0644 force=yes
+  notify: restart pgbouncer
+
+- name: Copy pgbouncer config
+  template: src=pgbouncer.ini dest=/etc/pgbouncer/pgbouncer.ini mode=0644 force=yes
   notify: restart pgbouncer
