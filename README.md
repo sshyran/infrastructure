@@ -30,6 +30,12 @@ For the elasticsearch cluster for [Libraries.io](https://github.com/librariesio/
 
     ansible-playbook ansible/elasticsearch.yml -i ansible/inventories/elasticsearch
 
+### memcached machines
+
+For the memcached machines for [Libraries.io](https://github.com/librariesio/libraries.io)
+
+    ansible-playbook ansible/memcached.yml -i ansible/inventories/memcached
+
 ### Note on Patches/Pull Requests
 
  * Fork the project.
