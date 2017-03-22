@@ -22,8 +22,20 @@
       - libicu-dev
       - pkg-config
       - postgresql-client
+    logrotate_scripts:
+      - name: rails
+        path: "/var/www/librariesio/current/log/*.log"
+        options:
+          - daily
+          - rotate 7
+          - copytruncate
+          - compress
+          - delaycompress
+          - missingok
+          - notifempty
   roles:
     - init
     - calebwoods.brightbox_ruby
     - cron
     - pgbouncer
+    - nickhammond.logrotate
