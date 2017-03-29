@@ -71,6 +71,12 @@
     minute: "54"
     job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production gitlab:find_new_repos > /dev/null 2>&1
 
+- name: gitlab:find_updated_repos
+  cron:
+    name: gitlab:find_updated_repos
+    minute: "0"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production gitlab:find_updated_repos > /dev/null 2>&1
+
 - name: download:bower_all
   cron:
     name: download:bower_all
