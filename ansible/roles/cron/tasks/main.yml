@@ -77,6 +77,18 @@
     minute: "0"
     job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production gitlab:find_updated_repos > /dev/null 2>&1
 
+- name: projects:potentially_outdated
+  cron:
+    name: projects:potentially_outdated
+    minute: "0"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production projects:potentially_outdated > /dev/null 2>&1
+
+- name: github:update_source_rank
+  cron:
+    name: github:update_source_rank
+    minute: "0"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production github:update_source_rank > /dev/null 2>&1
+
 - name: projects:sync
   cron:
     name: projects:sync
