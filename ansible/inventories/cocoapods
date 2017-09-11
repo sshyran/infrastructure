@@ -1,0 +1,5 @@
+[cocoapods]
+163.172.170.38
+
+[cocoapods:vars]
+ansible_user=root

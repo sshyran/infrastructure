@@ -42,6 +42,12 @@ For the swift parser server for [Libraries.io](https://github.com/librariesio/li
 
     ansible-playbook ansible/swift.yml -i ansible/inventories/swift
 
+### cocoapods machine
+
+For the cocoapods server for [Libraries.io](https://github.com/librariesio/libraries.io)
+
+    ansible-playbook ansible/cocoapods.yml -i ansible/inventories/cocoapods
+
 ### Note on Patches/Pull Requests
 
  * Fork the project.
