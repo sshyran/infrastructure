@@ -1,0 +1,5 @@
+[pip]
+51.15.53.165
+
+[pip:vars]
+ansible_user=root

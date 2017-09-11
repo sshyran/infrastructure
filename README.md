@@ -60,6 +60,12 @@ For the redis server for [Libraries.io](https://github.com/librariesio/libraries
 
     ansible-playbook ansible/redis.yml -i ansible/inventories/redis
 
+### pip machine
+
+For the pip server for [Libraries.io](https://github.com/librariesio/libraries.io)
+
+    ansible-playbook ansible/pip.yml -i ansible/inventories/pip
+
 ### Note on Patches/Pull Requests
 
  * Fork the project.
