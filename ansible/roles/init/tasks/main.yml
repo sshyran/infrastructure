@@ -8,6 +8,10 @@
   apt: pkg={{ item }} state=latest
   with_items: "{{ sys_packages }}"
 
+- name: Upgrade installed packages
+  become: yes
+  apt: upgrade=yes
+
 - name: Configure the timezone
   become: yes
   template: src=timezone.tpl dest=/etc/timezone

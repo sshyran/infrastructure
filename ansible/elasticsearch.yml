@@ -4,6 +4,7 @@
     timezone: UTC
     sys_packages:
       - curl
+      - aptitude
       - logrotate
     logrotate_scripts:
       - name: elasticsearch

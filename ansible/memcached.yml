@@ -4,6 +4,7 @@
     timezone: UTC
     sys_packages:
       - curl
+      - aptitude
       - logrotate
       - memcached
     logrotate_scripts:
