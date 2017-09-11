@@ -1,0 +1,8 @@
+---
+- hosts: redis
+  vars:
+    timezone: UTC
+    sys_packages:
+      - aptitude
+  roles:
+    - init

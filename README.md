@@ -54,6 +54,12 @@ For the nginx server for [Libraries.io](https://github.com/librariesio/libraries
 
     ansible-playbook ansible/nginx.yml -i ansible/inventories/nginx
 
+### redis machine
+
+For the redis server for [Libraries.io](https://github.com/librariesio/libraries.io)
+
+    ansible-playbook ansible/redis.yml -i ansible/inventories/redis
+
 ### Note on Patches/Pull Requests
 
  * Fork the project.
