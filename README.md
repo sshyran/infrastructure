@@ -48,6 +48,12 @@ For the cocoapods server for [Libraries.io](https://github.com/librariesio/libra
 
     ansible-playbook ansible/cocoapods.yml -i ansible/inventories/cocoapods
 
+### nginx machine
+
+For the nginx server for [Libraries.io](https://github.com/librariesio/libraries.io)
+
+    ansible-playbook ansible/nginx.yml -i ansible/inventories/nginx
+
 ### Note on Patches/Pull Requests
 
  * Fork the project.
