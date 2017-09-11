@@ -36,6 +36,12 @@ For the memcached machines for [Libraries.io](https://github.com/librariesio/lib
 
     ansible-playbook ansible/memcached.yml -i ansible/inventories/memcached
 
+### swift machine
+
+For the swift parser server for [Libraries.io](https://github.com/librariesio/libraries.io)
+
+    ansible-playbook ansible/swift.yml -i ansible/inventories/swift
+
 ### Note on Patches/Pull Requests
 
  * Fork the project.

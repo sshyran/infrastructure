@@ -1,0 +1,5 @@
+[swift]
+163.172.140.81
+
+[swift:vars]
+ansible_user=root
