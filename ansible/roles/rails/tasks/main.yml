@@ -1,3 +1,3 @@
 ---
 - name: Hourly restart cron job
-  cron: name="restart libraries" minute="*/30" job="/sbin/restart librariesio > /dev/null 2>&1"
+  cron: name="restart libraries" minute="{{ 59 | random(seed=inventory_hostname) }}" job="/sbin/restart librariesio > /dev/null 2>&1"
