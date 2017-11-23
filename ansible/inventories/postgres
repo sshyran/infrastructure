@@ -1,0 +1,6 @@
+[postgres]
+62.210.244.208
+62.210.244.214
+
+[postgres:vars]
+ansible_user=root
