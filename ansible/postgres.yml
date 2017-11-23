@@ -1,0 +1,38 @@
+---
+- hosts: postgres
+  vars:
+    timezone: UTC
+    sys_packages:
+      - aptitude
+    postgresql_version: 9.6
+    postgresql_max_connections:      600
+    postgresql_shared_buffers:       64GB
+    postgresql_effective_cache_size: 192GB
+    postgresql_work_mem:             33554kB
+    postgresql_maintenance_work_mem: 2GB
+    postgresql_max_wal_size:         8GB
+    postgresql_min_wal_size:         4GB
+    postgresql_checkpoint_completion_target: 0.9
+    postgresql_wal_buffers:          16MB
+    default_statistics_target:       500
+
+    postgresql_database_extensions:
+      - db: libraries_production
+        extensions:
+          - plpgsql
+          - pg_stat_statements
+
+    postgresql_databases:
+      - name: libraries_production
+        owner: libraries
+
+    postgresql_users:
+      - name: libraries
+        pass: pass
+
+    postgresql_user_privileges:
+      - name: libraries
+        db: libraries_production
+  roles:
+    - init
+    - ANXS.postgresql
