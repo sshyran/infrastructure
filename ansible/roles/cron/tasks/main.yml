@@ -217,6 +217,13 @@
     hour: "1"
     job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production download:wordpress > /dev/null 2>&1
 
+- name: download:racket
+  cron:
+    name: download:racket
+    minute: "1"
+    hour: "1"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production download:racket > /dev/null 2>&1
+
 - name: download:small_registries
   cron:
     name: download:small_registries
