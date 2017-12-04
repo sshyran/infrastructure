@@ -224,6 +224,13 @@
     hour: "1"
     job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production download:racket > /dev/null 2>&1
 
+- name: download:purescript_all
+  cron:
+    name: download:purescript_all
+    minute: "2"
+    hour: "2"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production download:purescript_all > /dev/null 2>&1
+
 - name: download:small_registries
   cron:
     name: download:small_registries
