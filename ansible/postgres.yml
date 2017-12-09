@@ -1,9 +1,12 @@
 ---
 - hosts: postgres
+  vars_files:
+    - vault.yml
   vars:
     timezone: UTC
     sys_packages:
       - aptitude
+      - htop
     postgresql_version: 9.6
     postgresql_max_connections:      600
     postgresql_shared_buffers:       64GB
@@ -28,11 +31,32 @@
 
     postgresql_users:
       - name: libraries
-        pass: pass
+        pass: "{{ postgres_password }}"
 
     postgresql_user_privileges:
       - name: libraries
         db: libraries_production
+
+    postgresql_pg_hba_default:
+      - { type: local, database: all, user: '{{ postgresql_admin_user }}', address: '', method: '{{ postgresql_default_auth_method }}', comment: '' }
+      - { type: local, database: all, user: all, address: '',             method: '{{ postgresql_default_auth_method }}', comment: '"local" is for Unix domain socket connections only' }
+      - { type: host,  database: all, user: all, address: '127.0.0.1/32', method: '{{ postgresql_default_auth_method }}', comment: 'IPv4 local connections:' }
+      - { type: host,  database: all, user: all, address: '::1/128',      method: '{{ postgresql_default_auth_method }}', comment: 'IPv6 local connections:' }
+      - { type: host,  database: all, user: all, address: '0.0.0.0/0',    method: 'md5', comment: 'anyone with password' }
+
+    postgresql_listen_addresses:
+      - '*'
+
+    postgresql_wal_level: replica
+    postgresql_max_wal_senders: 5
+    postgresql_wal_keep_segments: 32
+
+    postgresql_archive_mode: on
+    postgresql_hot_standby: on
+
+    postgresql_shared_preload_libraries:
+      - pg_stat_statements
+
   roles:
     - init
     - ANXS.postgresql
