@@ -1,6 +1,18 @@
-[postgres]
-62.210.244.208
-62.210.244.214
+[postgres_primary]
+primary ansible_ssh_host=62.210.244.208
+
+[postgres_replica]
+replica ansible_ssh_host=62.210.244.214
+
+[postgres:children]
+postgres_primary
+postgres_replica
 
 [postgres:vars]
 ansible_user=root
+
+[postgres_primary:vars]
+postgresql_hot_standby=off
+
+[postgres_replica:vars]
+postgresql_hot_standby=on

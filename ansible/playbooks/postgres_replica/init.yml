@@ -1,0 +1,27 @@
+---
+- hosts: postgres_replica
+  vars_files:
+    - ../../vault.yml
+  vars:
+    - postgres_data_dir: /var/lib/postgresql/9.6/main
+    - postgres_primary_host: 62.210.244.208
+  tasks:
+    - name: stop postgresql
+      service:
+        name: postgresql
+        state: stopped
+
+    - name: move main
+      shell: mv {{postgres_data_dir}} {{postgres_data_dir}}.`date --iso-8601`
+
+    - name: pg_basebackup
+      command: pg_basebackup -h {{postgres_primary_host}} -D {{postgres_data_dir}} -U replicator -v -P --xlog-method=stream
+      become_user: postgres
+
+    - name: make recovery file
+      template: src=recovery.conf.j2 dest={{postgres_data_dir}}/recovery.conf
+
+    - name: start postgresql
+      service:
+        name: postgresql
+        state: started

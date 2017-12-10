@@ -1,0 +1,8 @@
+---
+- hosts: postgres_replica
+  vars_files:
+    - vault.yml
+  vars:
+
+  tasks:
+    - name: make recovery file

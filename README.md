@@ -66,11 +66,15 @@ For the pip server for [Libraries.io](https://github.com/librariesio/libraries.i
 
     ansible-playbook ansible/pip.yml -i ansible/inventories/pip
 
-### pip machine
+### postgresql machine
 
 For the postgresql servers for [Libraries.io](https://github.com/librariesio/libraries.io)
 
     ansible-playbook ansible/postgres.yml -i ansible/inventories/postgres
+
+For setting up postgresql replica:
+
+    ansible-playbook ansible/playbooks/postgres_replica/tasks/init.yml -i ansible/inventories/postgres
 
 ### Note on Patches/Pull Requests
 

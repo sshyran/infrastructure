@@ -31,11 +31,15 @@
 
     postgresql_users:
       - name: libraries
-        pass: "{{ postgres_password }}"
+        pass: "{{ vault_postgres_libraries_password }}"
+      - name: replicator
+        pass: "{{ vault_postgres_replicator_password }}"
 
     postgresql_user_privileges:
       - name: libraries
         db: libraries_production
+      - name: replicator
+        role_attr_flags: 'REPLICATION,LOGIN'
 
     postgresql_pg_hba_default:
       - { type: local, database: all, user: '{{ postgresql_admin_user }}', address: '', method: '{{ postgresql_default_auth_method }}', comment: '' }
@@ -43,6 +47,7 @@
       - { type: host,  database: all, user: all, address: '127.0.0.1/32', method: '{{ postgresql_default_auth_method }}', comment: 'IPv4 local connections:' }
       - { type: host,  database: all, user: all, address: '::1/128',      method: '{{ postgresql_default_auth_method }}', comment: 'IPv6 local connections:' }
       - { type: host,  database: all, user: all, address: '0.0.0.0/0',    method: 'md5', comment: 'anyone with password' }
+      - { type: host,  database: replication, user: replicator, address: '{{hostvars.replica.ansible_ssh_host}}/32', method: 'md5', comment: 'replica' }
 
     postgresql_listen_addresses:
       - '*'
@@ -50,9 +55,6 @@
     postgresql_wal_level: replica
     postgresql_max_wal_senders: 5
     postgresql_wal_keep_segments: 32
-
-    postgresql_archive_mode: on
-    postgresql_hot_standby: on
 
     postgresql_shared_preload_libraries:
       - pg_stat_statements
