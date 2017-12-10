@@ -1,0 +1,8 @@
+---
+- name: Copy nginx config file
+  template: src=nginx.conf dest=/etc/nginx/nginx.conf  mode=0644 force=yes
+  notify: restart nginx
+
+- name: Copy librariesio config file
+  template: src=librariesio dest=/etc/nginx/sites-enabled/librariesio  mode=0644 force=yes
+  notify: restart nginx

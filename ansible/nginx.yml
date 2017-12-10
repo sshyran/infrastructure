@@ -6,3 +6,4 @@
       - aptitude
   roles:
     - init
+    - nginx
