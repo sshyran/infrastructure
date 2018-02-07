@@ -244,3 +244,11 @@
     minute: "1"
     hour: "1"
     job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production download:maven > /dev/null 2>&1
+
+- name: projects:download_missing
+  cron:
+    name: projects:download_missing
+    minute: "0"
+    hour: "0"
+    weekday: "3"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production projects:download_missing > /dev/null 2>&1
