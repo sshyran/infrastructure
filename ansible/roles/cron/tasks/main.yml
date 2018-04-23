@@ -252,3 +252,9 @@
     hour: "0"
     weekday: "3"
     job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production projects:download_missing > /dev/null 2>&1
+
+- name: scores:calculate
+  cron:
+    name: scores:calculate
+    minute: "*/10"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production scores:calculate > /dev/null 2>&1
