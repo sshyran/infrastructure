@@ -1,0 +1,41 @@
+---
+- hosts: all
+  vars:
+    timezone: UTC
+    sys_packages:
+      - build-essential
+      - aptitude
+      - libpq-dev
+      - libxml2-dev
+      - libxslt1-dev
+      - nodejs
+      - curl
+      - git-core
+      - software-properties-common
+      - pgbouncer
+      - docutils-common
+      - cron
+      - libcurl3
+      - libcurl3-gnutls
+      - libcurl4-openssl-dev
+      - cmake
+      - logrotate
+      - libicu-dev
+      - pkg-config
+      - postgresql-client
+      - libcurl4-openssl-dev
+    logrotate_scripts:
+      - name: rails
+        path: "/var/www/librariesio/current/log/*.log"
+        options:
+          - daily
+          - rotate 7
+          - copytruncate
+          - compress
+          - delaycompress
+          - missingok
+          - notifempty
+  roles:
+    - init
+    - calebwoods.brightbox_ruby
+    - pgbouncer
