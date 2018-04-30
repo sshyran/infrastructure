@@ -258,3 +258,9 @@
     name: scores:calculate
     minute: "*/10"
     job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production scores:calculate > /dev/null 2>&1
+
+- name: scores:update
+  cron:
+    name: scores:update
+    minute: "30"
+    job: cd /var/www/librariesio/current && /usr/local/bin/bundle exec rake RAILS_ENV=production scores:update > /dev/null 2>&1
