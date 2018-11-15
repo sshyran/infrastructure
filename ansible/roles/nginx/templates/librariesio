@@ -3,6 +3,11 @@ server {
   # listen 443;
   server_name *.libraries.io;
 
+  # force redirect to ssl when things come in over http from the load balancer
+  if ($http_x_forwarded_proto = "http") {
+      return 301 https://$host$request_uri;
+  }
+
   # ssl        on;
   # ssl_certificate         /root/certs/librariesio_cert.pem;
   # ssl_certificate_key     /root/certs/librariesio_key.pem;
